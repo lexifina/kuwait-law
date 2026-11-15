@@ -24,7 +24,8 @@ The text is in Arabic, as the Ministry of Justice publishes it. An English trans
 
 - **[Ask Claude about Kuwaiti law](https://global-law.lexifina.com/v1/try_claude?country=kuwait)**: opens Claude with a first question ready.
 - **[Ask ChatGPT](https://global-law.lexifina.com/v1/try_chatgpt?country=kuwait)**: the same question in ChatGPT.
-- **[Call the API in your browser](https://global-law.lexifina.com/v1/search_law?query=%D8%A7%D9%84%D8%B4%D8%A8%D9%83%D8%A9+%D8%A7%D9%84%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA%D9%8A%D8%A9&jurisdictions=kuwait)**: a search of Kuwaiti law for "الشبكة المعلوماتية" (the information network), returned as JSON. See the [documentation here](https://lexifina.com/api/global-law).
+- **[Search Kuwaiti law on our site](https://lexifina.com/law?country=kuwait&q=%D8%A7%D9%84%D8%B4%D8%A8%D9%83%D8%A9+%D8%A7%D9%84%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA%D9%8A%D8%A9)**: a search for "الشبكة المعلوماتية" (the information network), with each provision's text and its versions, no account needed.
+- **[Developer REST API](https://global-law.lexifina.com/v1/search_law?query=%D8%A7%D9%84%D8%B4%D8%A8%D9%83%D8%A9+%D8%A7%D9%84%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA%D9%8A%D8%A9&jurisdiction=kuwait)**: the same search as JSON, with no key. See the [documentation here](https://lexifina.com/api/global-law).
 
 Both assistants read the record through the free Global law connector (MCP, `https://global-law.lexifina.com/mcp`); the first time, the chat gives you the link that adds it. Ask in Arabic or in English.
 
