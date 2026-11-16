@@ -1,35 +1,41 @@
-# Kuwait: law history in git
+# الكويت: تاريخ القانون في git
 
+**العربية** · [English](README.en.md)
 
-The law of Kuwait as a git history: one file per provision, one commit per version on the day it took effect, and the act that made each change as the commit's author. `git blame` names the act behind every article; `git log` lists every change to an article; picking a date gives the text in force that day.
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="data/ar/effort-dark.svg">
+<img alt="القانون الكويتي في هذا المستودع: ما يحتويه، والتعديلات حسب سنة نفاذها، والاكتمال مقارنةً بالمصادر الرسمية، وصحة المحتوى" src="data/ar/effort-light.svg" width="880">
+</picture>
 
-Part of [lexifina/global-law](https://github.com/lexifina/global-law), one git history for every country's law: this is Kuwait's national law, which global-law reads at `kuwait/national/acts/`.
+القانون الكويتي في صورة سجل git: ملف لكل حكم، ولكل نسخة commit واحد في يوم نفاذها، والتشريع الذي أجرى كل تعديل هو مؤلف الـ commit. يبيّن `git blame` التشريع الذي يقف وراء كل مادة؛ ويسرد `git log` كل تعديل طرأ على مادة؛ واختيار تاريخ ما يعطي النص النافذ في ذلك اليوم.
 
-**What is in it now:** one act, Law No. 63 of 2015 on combating information technology crimes, in one version: its 21 articles as issued, with no amendments recorded. The Constitution and the rest of Kuwaiti law are not here yet. [`law-63-2015/README.md`](law-63-2015/README.md) lists every article; [`REPRODUCE.md`](REPRODUCE.md) says how the files were made.
+جزء من [lexifina/global-law](https://github.com/lexifina/global-law)، وهو سجل git واحد لقانون كل بلد: هذا هو القانون الوطني الكويتي، الذي يقرؤه global-law في `kuwait/national/acts/`.
 
-Each act is a folder with one file per article: `law-63-2015/art-001.md` is Article 1 of قانون رقم 63 لسنة 2015 في شأن مكافحة جرائم تقنية المعلومات (Law No. 63 of 2015 on combating information technology crimes).
+**المحتوى الحالي:** تشريع واحد، القانون رقم 63 لسنة 2015 في شأن مكافحة جرائم تقنية المعلومات، في نسخة واحدة: مواده الـ 21 كما صدرت، دون تسجيل أي تعديلات. ولا يوجد هنا حتى الآن الدستور ولا بقية القانون الكويتي. يسرد [`law-63-2015/README.md`](law-63-2015/README.md) كل مادة؛ ويبيّن [`REPRODUCE.md`](REPRODUCE.md) كيف أُعدّت الملفات.
 
-The text is in Arabic, as the Ministry of Justice publishes it. An English translation is not part of this record.
+كل تشريع مجلد، فيه ملف لكل مادة: `law-63-2015/art-001.md` هي المادة 1 من قانون رقم 63 لسنة 2015 في شأن مكافحة جرائم تقنية المعلومات.
 
-## Questions as git commands
+النص باللغة العربية، كما تنشره وزارة العدل. والترجمة الإنجليزية ليست جزءًا من هذا السجل.
 
-| Question | Command |
+## الأسئلة في صورة أوامر git
+
+| السؤال | الأمر |
 | --- | --- |
-| Every change to Article 1 of Law 63/2015 | `git log -p --word-diff -- law-63-2015/art-001.md` |
-| Which act wrote each line of Article 1? | `git blame law-63-2015/art-001.md` |
-| Every version of Law 63/2015, with the day each took effect | `git log --format="%h %(trailers:key=In-force,valueonly,separator=) %an" -- law-63-2015 ":^law-63-2015/README.md"` |
-| Article 1 as in force on 1 January 2026 | `python tools/on.py 2026-01-01 law-63-2015 art-001` |
+| كل تعديل طرأ على المادة 1 من القانون 63/2015 | `git log -p --word-diff -- law-63-2015/art-001.md` |
+| أي تشريع كتب كل سطر من المادة 1؟ | `git blame law-63-2015/art-001.md` |
+| كل نسخ القانون 63/2015، مع يوم نفاذ كل منها | `git log --format="%h %(trailers:key=In-force,valueonly,separator=) %an" -- law-63-2015 ":^law-63-2015/README.md"` |
+| المادة 1 كما كانت نافذة في 1 يناير 2026 | `python tools/on.py 2026-01-01 law-63-2015 art-001` |
 
-**Outside git**, we also host this record publicly, for free:
+**خارج git**، نستضيف هذا السجل أيضًا للعموم، مجانًا:
 
-- **[Ask Claude about Kuwaiti law](https://global-law.lexifina.com/v1/try_claude?country=kuwait)**: opens Claude with a first question ready.
-- **[Ask ChatGPT](https://global-law.lexifina.com/v1/try_chatgpt?country=kuwait)**: the same question in ChatGPT.
-- **[Search Kuwaiti law on our site](https://lexifina.com/law?country=kuwait&q=%D8%A7%D9%84%D8%B4%D8%A8%D9%83%D8%A9+%D8%A7%D9%84%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA%D9%8A%D8%A9)**: a search for "الشبكة المعلوماتية" (the information network), with each provision's text and its versions, no account needed.
-- **[Developer REST API](https://global-law.lexifina.com/v1/search_law?query=%D8%A7%D9%84%D8%B4%D8%A8%D9%83%D8%A9+%D8%A7%D9%84%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA%D9%8A%D8%A9&jurisdiction=kuwait)**: the same search as JSON, with no key. See the [documentation here](https://lexifina.com/api/global-law).
+- **[اسأل Claude عن القانون الكويتي](https://global-law.lexifina.com/v1/try_claude?country=kuwait)**: يفتح Claude ومعه سؤال أول جاهز.
+- **[اسأل ChatGPT](https://global-law.lexifina.com/v1/try_chatgpt?country=kuwait)**: السؤال نفسه في ChatGPT.
+- **[ابحث في القانون الكويتي على موقعنا](https://lexifina.com/law?country=kuwait&q=%D8%A7%D9%84%D8%B4%D8%A8%D9%83%D8%A9+%D8%A7%D9%84%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA%D9%8A%D8%A9)**: بحث عن "الشبكة المعلوماتية"، مع نص كل حكم ونسخه، دون الحاجة إلى حساب.
+- **[واجهة REST API للمطوّرين](https://global-law.lexifina.com/v1/search_law?query=%D8%A7%D9%84%D8%B4%D8%A8%D9%83%D8%A9+%D8%A7%D9%84%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA%D9%8A%D8%A9&jurisdiction=kuwait)**: البحث نفسه بصيغة JSON، دون مفتاح. انظر [التوثيق هنا](https://lexifina.com/api/global-law).
 
-Both assistants read the record through the free Global law connector (MCP, `https://global-law.lexifina.com/mcp`); the first time, the chat gives you the link that adds it. Ask in Arabic or in English.
+يقرأ المساعدان كلاهما السجل عبر موصِّل Global law المجاني (MCP، `https://global-law.lexifina.com/mcp`)؛ وفي المرة الأولى تعطيك المحادثة الرابط الذي يضيفه. اسأل بالعربية أو بالإنجليزية.
 
-**Host it yourself easily.** All it takes is git and Python, and the tools run on your machine:
+**استضفه بنفسك بسهولة.** كل ما يلزم هو git وPython، والأدوات تعمل على جهازك:
 
 ```sh
 git clone --depth 1 https://github.com/lexifina/global-law && cd global-law
@@ -37,48 +43,50 @@ python3 tools/countries.py add kuwait/national/acts
 python3 tools/law.py show 2026-01-01 kuwait/national/acts/law-63-2015/art-001.md
 ```
 
-Opened in Claude Code, Cursor, VS Code or Codex, the clone also starts a local MCP server with the same tools ([MCP.md](https://github.com/lexifina/global-law/blob/main/MCP.md)).
+عند فتح النسخة المستنسخة في Claude Code أو Cursor أو VS Code أو Codex، تشغّل أيضًا خادم MCP محليًا بالأدوات نفسها ([MCP.md](https://github.com/lexifina/global-law/blob/main/MCP.md)).
 
-## Dates
+## التواريخ
 
-Each commit is dated at noon, Asia/Kuwait, and carries its day in its `In-force:` trailer:
+يحمل كل commit تاريخ الظهيرة، بتوقيت Asia/Kuwait، ويحمل يومه في تذييله (trailer) `In-force:`:
 
-- by default a Kuwaiti law takes effect on its publication in Kuwait Al-Youm, the Official Gazette, unless it says otherwise;
-- Law 63/2015 says otherwise: by its Article 21 it applies six months after its publication in the Official Gazette. The source gives no publication date, so its one version is dated 7 July 2015 (20 Ramadan 1436), the day the Amir issued it, as the oldest version available, not as the day it took effect. A date before 7 July 2015 gives no text.
+- يُعمل بالقانون الكويتي، كقاعدة عامة، من تاريخ نشره في الجريدة الرسمية "الكويت اليوم"، ما لم ينص على غير ذلك؛
+- والقانون 63/2015 ينص على غير ذلك: فبموجب مادته 21 يُعمل به بعد ستة أشهر من تاريخ نشره في الجريدة الرسمية. ولا يعطي المصدر تاريخ النشر، لذا تحمل نسخته الوحيدة تاريخ 7 يوليو 2015 (20 رمضان 1436)، وهو يوم إصداره من الأمير، بوصفها أقدم نسخة متاحة، لا بوصفه يوم نفاذه. أي تاريخ قبل 7 يوليو 2015 لا يعطي نصًا.
 
-That version is not credited to a law: it is credited to the publisher, the Ministry of Justice of Kuwait (وزارة العدل), as the "oldest version available" (`Kind: publisher`). The committer is Lexifina.
+لا تُنسب هذه النسخة إلى قانون: فهي منسوبة إلى الجهة الناشرة، وزارة العدل الكويتية، بوصفها "أقدم نسخة متاحة" (`Kind: publisher`). والمُودِع (committer) هو Lexifina.
 
-## How it is checked
+## كيف يُتحقَّق منه
 
-- The text is the text layer of the Ministry's PDF, one paragraph or item per line. Digit runs the PDF stores in visual order were restored and checked against a rendering of the page, kashida was removed and spacing normalised; the wording was not changed. The PDF's sha256 is in `data/versions.json`.
-- `tools/check_repo.py` reads every version back from git on the day it took effect and on the day before and compares it with the corpus, whose hash is in `data/corpus.sha256`; it also checks that every commit's trailers parse, that `main` has no merge commits and that no commit is dated in the future.
-- `tools/build.py` writes the history from that one corpus file, and the same corpus gives the same commit hashes. [`REPRODUCE.md`](REPRODUCE.md) records that the checks were not yet run for this build and that no second build has been compared.
+- النص هو الطبقة النصية لملف PDF الصادر عن الوزارة، بفقرة أو بند في كل سطر. أُعيدت سلاسل الأرقام التي يخزّنها ملف PDF بالترتيب المرئي إلى ترتيبها الصحيح وتُحقِّق منها بمقارنتها بصورة معروضة للصفحة، وأُزيلت الكشيدة (التطويل) ووُحِّدت المسافات؛ ولم تُغيَّر الصياغة. توجد بصمة sha256 لملف PDF في `data/versions.json`.
+- يعيد `tools/check_repo.py` قراءة كل نسخة من git في يوم نفاذها وفي اليوم السابق له، ويقارنها بالمجموعة، التي توجد بصمتها (hash) في `data/corpus.sha256`؛ ويتحقق أيضًا من أن تذييلات كل commit قابلة للتحليل، وأن `main` خالٍ من commits الدمج، وأنه لا يوجد commit مؤرَّخ في المستقبل.
+- يكتب `tools/build.py` السجل من ملف المجموعة الواحد هذا، والمجموعة نفسها تعطي بصمات الـ commits نفسها. ويسجّل [`REPRODUCE.md`](REPRODUCE.md) أن عمليات التحقق لم تُشغَّل بعد لهذا البناء وأنه لم تُقارَن به أي عملية بناء ثانية.
 
-## What it does not show
+## ما لا يُظهره
 
-- **The Constitution and the rest of Kuwaiti law.** Only Law 63/2015 is here; the Ministry's PDF of the Constitution has an unreadable text layer, so it is not included.
-- **Amendments.** Law 63/2015 is recorded as issued; amendments, if any, are not.
-- **The preamble's recitals and the explanatory memorandum**, which are left out.
+- **الدستور وبقية القانون الكويتي.** لا يوجد هنا سوى القانون 63/2015؛ فالطبقة النصية في ملف PDF الخاص بالدستور الصادر عن الوزارة غير مقروءة، ولذلك لم يُدرج.
+- **التعديلات.** القانون 63/2015 مسجَّل كما صدر؛ أما تعديلاته، إن وُجدت، فليست مسجَّلة.
+- **حيثيات الديباجة والمذكرة الإيضاحية**، فهي مستبعدة.
 
-## Sources
+## المصادر
 
-| Source | Kind | Past versions | Notes |
+| المصدر | النوع | النسخ السابقة | ملاحظات |
 | --- | --- | --- | --- |
-| [Ministry of Justice of Kuwait](https://www.moj.gov.kw/AR/Pages/MojLaws.aspx) (وزارة العدل) | Official laws page, PDF | no, the law as issued | The PDF's text layer, read on 29 October 2026 |
+| [وزارة العدل الكويتية](https://www.moj.gov.kw/AR/Pages/MojLaws.aspx) | صفحة القوانين الرسمية، PDF | لا، القانون كما صدر | الطبقة النصية لملف PDF، قُرئت في 29 أكتوبر 2026 |
 
-## Licence
+## الترخيص
 
-See [`LICENSE`](LICENSE). The Ministry states no licence; the text is official legislation, credited to the Ministry of Justice. Lexifina's history, commit messages, tables and tools are CC0 1.0.
+انظر [`LICENSE`](LICENSE). لا تذكر الوزارة أي ترخيص؛ والنص تشريع رسمي، يُنسب إلى وزارة العدل. أما سجل Lexifina ورسائل الـ commits والجداول والأدوات فهي بموجب CC0 1.0.
 
-No AI model wrote, translated or corrected legal text; the scripts were written by an AI model (see [`REPRODUCE.md`](REPRODUCE.md)).
+لم يكتب أي نموذج ذكاء اصطناعي نصًا قانونيًا ولم يترجمه ولم يصححه؛ أما البرامج النصية (scripts) فكتبها نموذج ذكاء اصطناعي (انظر [`REPRODUCE.md`](REPRODUCE.md)).
 
-## More
+هذا النص ترجمة للنسخة الإنجليزية ([README.en.md](README.en.md))؛ وعند الاختلاف تسود النسخة الإنجليزية.
 
-From [lexifina/global-law](https://github.com/lexifina/global-law):
+## المزيد
 
-- [FEATURES.md](https://github.com/lexifina/global-law/blob/main/FEATURES.md): every feature, and what every corpus must support (`git blame`, `law.py`, the MCP tools)
-- [FAQ.md](https://github.com/lexifina/global-law/blob/main/FAQ.md): questions and answers · [CONTRIBUTING.md](https://github.com/lexifina/global-law/blob/main/CONTRIBUTING.md): proposing changes · [MCP.md](https://github.com/lexifina/global-law/blob/main/MCP.md): the MCP server · [REPRODUCE.md](https://github.com/lexifina/global-law/blob/main/REPRODUCE.md): how it was built · [CHANGELOG.md](https://github.com/lexifina/global-law/blob/main/CHANGELOG.md)
-- [FRESHNESS.md](https://github.com/lexifina/global-law/blob/main/FRESHNESS.md): how current each corpus is · [Monitoring](https://github.com/lexifina/global-law/tree/main/monitoring): whether updates are running · [WATCHING.md](https://github.com/lexifina/global-law/blob/main/WATCHING.md): how each official source is watched for changes
-- [performance/](https://github.com/lexifina/global-law/tree/main/performance): how fast the tools are, measured
-- [visualisations/](https://github.com/lexifina/global-law/tree/main/visualisations): charts and bridges across the world's law
-- [Vulnerabilities](https://github.com/lexifina/global-law/tree/main/vulnerabilities): mistakes in legislation as published
+من مستودع [lexifina/global-law](https://github.com/lexifina/global-law) (صفحات باللغة الإنجليزية):
+
+- [FEATURES.md](https://github.com/lexifina/global-law/blob/main/FEATURES.md): جميع الميزات، وما يجب أن تدعمه كل مجموعة (`git blame`، `law.py`، أدوات MCP)
+- [FAQ.md](https://github.com/lexifina/global-law/blob/main/FAQ.md): أسئلة وأجوبة · [CONTRIBUTING.md](https://github.com/lexifina/global-law/blob/main/CONTRIBUTING.md): اقتراح تغييرات · [MCP.md](https://github.com/lexifina/global-law/blob/main/MCP.md): خادم MCP · [REPRODUCE.md](https://github.com/lexifina/global-law/blob/main/REPRODUCE.md): طريقة البناء · [CHANGELOG.md](https://github.com/lexifina/global-law/blob/main/CHANGELOG.md)
+- [FRESHNESS.md](https://github.com/lexifina/global-law/blob/main/FRESHNESS.md): مدى حداثة كل مجموعة · [المراقبة](https://github.com/lexifina/global-law/tree/main/monitoring): هل تعمل التحديثات · [WATCHING.md](https://github.com/lexifina/global-law/blob/main/WATCHING.md): كيف يُراقَب كل مصدر رسمي لرصد التغييرات
+- [performance/](https://github.com/lexifina/global-law/tree/main/performance): سرعة الأدوات كما قيست
+- [visualisations/](https://github.com/lexifina/global-law/tree/main/visualisations): رسوم بيانية وروابط عبر قوانين العالم
+- [الثغرات](https://github.com/lexifina/global-law/tree/main/vulnerabilities): أخطاء في التشريعات كما نُشرت
